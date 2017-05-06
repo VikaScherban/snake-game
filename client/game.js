@@ -26,7 +26,7 @@ function Game() {
     this.canvas.width = this.canvasWidth;
     this.canvas.height = this.canvasHeight;
     this.canvas.style.border = '1px solid #444';
-    this.canvas.style.marginTop = "100px";
+    this.canvas.style.marginTop = "10px";
 
     // context
     this.context = this.canvas.getContext('2d');
@@ -45,14 +45,14 @@ function Game() {
 
 Game.prototype.init = function() {
     this.reset();
-}
+};
 
 Game.prototype.update = function() {
     if (this.getStatus() == this.STATUS.PLAY) {
         this.snake.update();
     }
     input.isLock = false;
-}
+};
 
 Game.prototype.reset = function() {
     this.snake = new Snake(this);
@@ -60,7 +60,7 @@ Game.prototype.reset = function() {
 
     // zeroing variables
     this.score = 0;
-}
+};
 
 Game.prototype.render = function() {
     // clear scene
@@ -97,7 +97,7 @@ Game.prototype.render = function() {
             this.showMsg('Pause', 'Press space to continue');
             break;
     }
-}
+};
 
 /*
 
@@ -137,7 +137,7 @@ Game.prototype.showMsg = function(header, action, addition) {
         this.context.fillText(addition, this.canvasWidth / 2, this.canvasHeight - 32);
         this.context.closePath();
     }
-}
+};
 
 /*
 
@@ -148,17 +148,17 @@ Game.prototype.showMsg = function(header, action, addition) {
 Game.prototype.setStatus = function(value) {
     this.onStatusChange(value, this.status);
     this.status = value;
-}
+};
 
 Game.prototype.getStatus = function() {
     return this.status;
-}
+};
 
 Game.prototype.onStatusChange = function(newstatus, oldstatus) {
     if (newstatus == this.STATUS.PLAY && oldstatus != this.STATUS.PAUSE) {
         this.apple.create();
     }
-}
+};
 
 /*
 
@@ -193,4 +193,4 @@ Game.prototype.handleInput = function() {
             this.snake.setRoute('RIGHT');
         }
     }
-}
+};

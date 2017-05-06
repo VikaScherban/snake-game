@@ -81,20 +81,21 @@ Snake.prototype.update = function() {
     }
 
     return 0;
-}
+};
 
 Snake.prototype.render = function() {
     for (var i = this.getSize() - 1; i != -1; i--) {
         if (i == 0) {
             this.game.context.fillStyle = this.game.snakeHeadColor;
-            this.game.context.drawImage(headImg, 0,0, 16, 21, this.body[i].x * this.game.cellSize + 1, this.body[i].y * this.game.cellSize + 1, 16, 21);
+            this.game.context.fillRect(this.body[i].x * this.game.cellSize + 1, this.body[i].y * this.game.cellSize + 1, this.game.cellSize - 2, this.game.cellSize - 2);
+            //this.game.context.drawImage(headImg, 0,0, 16, 21, this.body[i].x * this.game.cellSize + 1, this.body[i].y * this.game.cellSize + 1, 16, 21);
         } else {
             this.game.context.fillStyle = this.game.snakeColor;
         }
         if (i!=0)
         this.game.context.fillRect(this.body[i].x * this.game.cellSize + 1, this.body[i].y * this.game.cellSize + 1, this.game.cellSize - 2, this.game.cellSize - 2);
     }
-}
+};
 
 Snake.prototype.addElement = function() {
     // get place to adding
@@ -127,16 +128,16 @@ Snake.prototype.addElement = function() {
     }
 
     return false;
-}
+};
 
 Snake.prototype.getSize = function() {
     return this.body.length;
-}
+};
 
 Snake.prototype.setRoute = function(value) {
     this.route = this.ROUTE[value];
-}
+};
 
 Snake.prototype.isRoute = function(value) {
     return this.route == this.ROUTE[value];
-}
+};
